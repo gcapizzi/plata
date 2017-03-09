@@ -1,3 +1,5 @@
+extern crate todo_cli;
+
 fn main() {
-    println!("Hello, world!");
+    todo_cli::say_hello();
 }
