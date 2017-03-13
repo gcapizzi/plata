@@ -1,5 +1,9 @@
 extern crate todo_cli;
 
 fn main() {
-    todo_cli::TodoApp {}.run(std::env::args().collect());
+    let app = todo_cli::TodoApp {};
+    let args = std::env::args().collect();
+    let output = app.run(args);
+
+    println!("{}", output);
 }

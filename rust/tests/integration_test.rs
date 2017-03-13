@@ -1,6 +1,12 @@
 extern crate todo_cli;
 
 #[test]
-fn it_works() {
-    todo_cli::TodoApp {}.run(vec![]);
+fn it_adds_a_todo() {
+    let writer_app = todo_cli::TodoApp {};
+    writer_app.run(vec!["add".to_string(), "foo".to_string()]);
+
+    let reader_app = todo_cli::TodoApp {};
+    let list_output = reader_app.run(vec!["list".to_string()]);
+
+    assert_eq!(list_output, "foo\n");
 }
