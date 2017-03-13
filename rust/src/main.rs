@@ -1,5 +1,5 @@
 extern crate todo_cli;
 
 fn main() {
-    todo_cli::say_hello();
+    todo_cli::TodoApp {}.run(std::env::args().collect());
 }
