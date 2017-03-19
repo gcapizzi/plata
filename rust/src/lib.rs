@@ -7,6 +7,7 @@ use std::io::Write;
 impl TodoApp {
     pub fn run(&self, args: Vec<String>) -> String {
         return match args[0].as_ref() {
+            "clear" => self.clear(),
             "add" => {
                 self.add(&args[1]);
                 "".to_string()
@@ -14,6 +15,16 @@ impl TodoApp {
             "list" => self.list(),
             _ => "Unrecognized command".to_string(),
         }
+    }
+
+    fn clear(&self) -> String {
+        OpenOptions::new()
+            .create(true)
+            .write(true)
+            .truncate(true)
+            .open("/Users/giuseppe/.todo")
+            .unwrap();
+        return "".to_string()
     }
 
     fn add(&self, text: &str) {
