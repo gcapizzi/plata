@@ -8,10 +8,7 @@ impl TodoApp {
     pub fn run(&self, args: Vec<String>) -> String {
         return match args[0].as_ref() {
             "clear" => self.clear(),
-            "add" => {
-                self.add(&args[1]);
-                "".to_string()
-            }
+            "add" => self.add(&args[1]),
             "list" => self.list(),
             _ => "Unrecognized command".to_string(),
         }
@@ -27,13 +24,14 @@ impl TodoApp {
         return "".to_string()
     }
 
-    fn add(&self, text: &str) {
+    fn add(&self, text: &str) -> String {
         let mut file = OpenOptions::new()
             .create(true)
             .append(true)
             .open("/Users/giuseppe/.todo")
             .unwrap();
         file.write_all((text.to_string() + "\n").as_bytes());
+        return "".to_string()
     }
 
     fn list(&self) -> String {
