@@ -30,7 +30,7 @@ impl TodoApp {
             .append(true)
             .open("/Users/giuseppe/.todo")
             .unwrap();
-        file.write_all((text.to_string() + "\n").as_bytes());
+        file.write_all((text.to_string() + "\n").as_bytes()).unwrap();
         return "".to_string()
     }
 
@@ -40,7 +40,7 @@ impl TodoApp {
             .open("/Users/giuseppe/.todo")
             .unwrap();
         let mut buffer = String::new();
-        file.read_to_string(&mut buffer);
+        file.read_to_string(&mut buffer).unwrap();
         return buffer;
     }
 }
